@@ -1,0 +1,9 @@
+
+=== Training PCFG Model on Penn Treebank ===
+
+=== Step 2: Extracting Grammar & Building PCFG Model ===
+PCFG model compiled and saved to 'pcfg_grammar.json'.
+
+=== Step 3: Parsing & Evaluating Test Sentences ===
+Parsing: Former/JJ Krrish/NNP Group/NNP Director/NNP Janaki/NNP Siriwardena/NNP has/VBZ been/VBN arrested/VBN by/IN the/DT Commission/NNP to/TO Investigate/NNP Allegations/NNP of/IN Bribery/NNP or/CC Corruption/NNP  CIABOC/NNP  ./.
+
