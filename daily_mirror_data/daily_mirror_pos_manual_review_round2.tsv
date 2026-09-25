@@ -1,0 +1,41 @@
+line	token_index	original	proposed	status	reason
+5	15	’/VB	’/``	CONFIRMED	Opening quotation mark before the rating label "B-"; use the Penn opening-quote tag.
+5	16	B-/NNP	B-/NN	CONFIRMED	Credit-rating code used as a quoted categorical label, not a proper name.
+5	17	’/NNP	’/''	CONFIRMED	Closing quotation mark after the rating label "B-".
+5	19	’/NNP	’/``	CONFIRMED	Opening quotation mark before the rating label "CCC+".
+5	20	CCC+/NNP	CCC+/NN	CONFIRMED	Credit-rating code used as a quoted categorical label, not a proper name.
+5	21	’/NNP	’/''	CONFIRMED	Closing quotation mark after the rating label "CCC+".
+8	22	lower/JJR	lower/JJ	CONFIRMED	Coordinate adjective with "upper" modifying "range"; no comparison is expressed.
+11	32	due/JJ	due/JJ	KEEP	Adjective in the established construction "due to"; JJ is acceptable in Penn Treebank tagging.
+15	3	italian/JJ	Italian/JJ	CONFIRMED	The adjectival tag is correct, but the nationality adjective requires capitalization.
+15	7	down/RB	down/RP	CONFIRMED	Particle completing the phrasal verb "fell down".
+16	15	​oppose/VBP	oppose/VBP	CONFIRMED	Remove the leading zero-width character; the plural present-tense verb tag remains correct.
+16	29	‌President/NN	President/NNP	CONFIRMED	Remove the leading zero-width character and tag the title before "Xi Jinping" as a proper title.
+17	1	Civil/NNP	Civil/JJ	CONFIRMED	Sentence-initial adjective modifying "society organisation"; capitalization is positional.
+23	6	Cursed/JJ	Cursed/NNP	CONFIRMED	Component of the work title "Harry Potter And The Cursed Child".
+23	15	living/VBG	living/NN	CONFIRMED	Noun in the fixed noun phrase "cost of living".
+24	1	Justice/NNP	Justice/NN	CONFIRMED	Abstract common noun at sentence start, not a personal title or proper name.
+25	7	lower/JJR	lower/JJR	KEEP	Comparative adjective in "closed marginally lower"; JJR is correct here.
+34	7	‘/NNP	‘/``	CONFIRMED	Opening quotation mark around the elephant's name.
+34	9	’/NNP	’/''	CONFIRMED	Closing quotation mark around the elephant's name.
+34	19	following/VBG	following/VBG	KEEP	Participial preposition introducing "an operation"; VBG is conventional and defensible in Penn tagging.
+37	1	Dengue/NNP	Dengue/NN	CONFIRMED	Common disease name in "Dengue cases"; sentence-initial capitalization does not make it proper.
+39	13	detected/VBD	detected/VBN	CONFIRMED	Past participle in the headline passive "vector propagation [was] detected".
+47	36	above/RB	above/RB	KEEP	Adverb in the coordinated age expression "50 and above".
+48	23	–/NN	–/:	CONFIRMED	En dash marking a numeric range; Penn uses the colon/dash punctuation tag.
+53	1	Methamphetamine/NNP	Methamphetamine/NN	CONFIRMED	Common drug name; capitalization occurs only because it begins the sentence.
+56	3	MPs/NNP	MPs/NNPS	CONFIRMED	Plural proper-name abbreviation referring to Members of Parliament.
+68	1	Examination/NN	Examination/NNP	CONFIRMED	Continuation of the official title "General Certificate of Education Examination" split across lines 67–68.
+72	6	Police/NNP	Police/NN	CONFIRMED	Common attributive noun in the lowercased institutional phrase "Police department", consistent with line 83.
+78	7	most/JJS	most/JJS	KEEP	Superlative quantifier modifying "road accidents"; JJS is the conventional Penn analysis.
+89	9	'/''	'/``	CONFIRMED	Opening quotation mark before the manifesto title; the raw text contains no matching closing quote.
+95	1	“/NN	“/``	CONFIRMED	Opening quotation mark beginning direct speech.
+96	21	”/FW	”/''	CONFIRMED	Closing quotation mark ending the direct quotation begun on line 95.
+110	1	Chief/JJ	Chief/NNP	CONFIRMED	First component of the official title "Chief Justice", consistent with line 111.
+120	6	High/JJ	High/NNP	CONFIRMED	Part of the official institution name "High Court".
+123	1	“/VB	“/``	CONFIRMED	Opening quotation mark beginning direct speech.
+123	35	”/NNP	”/''	CONFIRMED	Closing quotation mark ending direct speech.
+128	1	“/IN	“/``	CONFIRMED	Opening quotation mark beginning direct speech.
+128	16	”/NNP	”/''	CONFIRMED	Closing quotation mark ending direct speech.
+136	14	leading/VBG	leading/VBG	KEEP	Participial modifier in "leading hotels"; VBG is an acceptable Penn analysis.
+146	36	”/NN	”/''	CONFIRMED	Closing quotation mark ending the preceding direct speech.

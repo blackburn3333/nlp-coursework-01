@@ -1,0 +1,115 @@
+line	token_index	original	proposed	status	reason
+1	1	Former/NNP	Former/JJ	CONFIRMED	Sentence-initial attributive adjective modifying "Krrish Group Director"; capitalization alone does not make it a proper noun.
+2	1	Fifteen/JJ	Fifteen/CD	CONFIRMED	Written cardinal number quantifying "people"; Penn Treebank uses CD.
+2	8	s/NN	s/POS	CONFIRMED	Possessive clitic in "Sri Lanka's"; the preceding apostrophe was split by mojibake.
+3	4	carried/VBD	carried/VBN	CONFIRMED	Past participle in the reduced passive clause "attacks, carried out by ...", not a finite past verb.
+3	8	suicide/JJ	suicide/NN	CONFIRMED	Attributive noun in the compound "suicide bombers", consistent with other corpus occurrences.
+3	13	Islamist/NNP	Islamist/JJ	CONFIRMED	Adjective modifying "extremist group"; it is not a proper name in this context.
+3	20	linked/VBD	linked/VBN	CONFIRMED	Past participle in the reduced passive clause "group ..., linked to ISIS".
+4	12	further/RBR	further/RBR	KEEP	Valid comparative adverb modifying "remanded"; the original Penn Treebank tag is defensible.
+4	22	s/VBD	s/POS	CONFIRMED	Possessive clitic in "Magistrate's Court"; it is not a past-tense verb.
+5	9	s/VBD	s/POS	CONFIRMED	Possessive clitic in "Sri Lanka's"; it is not a past-tense verb.
+7	1	New/NNP	New/JJ	CONFIRMED	Sentence-initial adjective modifying "regulations"; capitalization is positional.
+8	19	specified/VBN	specified/VBN	KEEP	Participial modifier in "specified upper and lower range"; VBN is acceptable.
+8	20	upper/NN	upper/JJ	CONFIRMED	Coordinate adjective with "lower" modifying "range".
+12	16	de/IN	de/NNP	CONFIRMED	Name particle within the personal name "Aravinda de Silva"; tag consistently as a proper-name component.
+13	1	Former/NNP	Former/JJ	CONFIRMED	Sentence-initial adjective modifying the title "First Lady".
+14	1	Certain/NN	Certain/JJ	CONFIRMED	Determiner-like adjective modifying plural "Individuals"; it is not a noun.
+15	3	italian/JJ	italian/JJ	KEEP	Despite incorrect lowercase spelling, the adjective tag before "woman" is correct; casing repair is outside this POS review.
+17	8	ruling/VBG	ruling/VBG	KEEP	Participial modifier in the established phrase "ruling party"; VBG is acceptable under Penn Treebank annotation.
+17	10	MPs/NNP	MPs/NNPS	CONFIRMED	Plural proper-name abbreviation referring to Members of Parliament.
+18	2	MPs/NNP	MPs/NNPS	CONFIRMED	Plural proper-name abbreviation; use NNPS rather than singular NNP.
+18	6	dressed/VBD	dressed/VBN	CONFIRMED	Past participle functioning as a subject-oriented complement after "arrived".
+19	12	s/VBD	s/POS	CONFIRMED	Possessive clitic in "country's"; it is not a finite verb.
+22	19	AI-powered/NNP	AI-powered/JJ	CONFIRMED	Compound adjective modifying "dashboard", not a proper noun.
+23	29	s/VBD	s/POS	CONFIRMED	Possessive clitic in "play's"; it is not a finite verb.
+24	22	remain/NN	remain/VBP	CONFIRMED	Finite present-tense verb whose coordinated subject is "establishing ... and ensuring ...".
+24	27	s/VBD	s/POS	CONFIRMED	Possessive clitic in "Government's"; it is not a finite verb.
+27	6	MPs/NNP	MPs/NNPS	CONFIRMED	Plural proper-name abbreviation; use NNPS rather than singular NNP.
+28	28	alleged/JJ	alleged/JJ	KEEP	Lexical attributive adjective modifying "free employment opportunities"; the original tag is correct.
+31	3	required/VBN	required/VBN	KEEP	Past-participial postmodifier of "amendments"; VBN is defensible.
+33	16	wildlife/VB	wildlife/NN	CONFIRMED	Noun coordinated with the attributive noun "veterinary" in "wildlife and veterinary officers"; it is not a verb.
+34	12	elephant/JJ	elephant/NN	CONFIRMED	Head noun of the noun phrase "the elephant roaming ...".
+34	22	carried/VBD	carried/VBN	CONFIRMED	Past participle in the reduced passive "operation carried out by ...".
+35	13	s/JJ	s/POS	CONFIRMED	Possessive clitic in the proper name "National People's Power".
+35	26	evening/VBG	evening/NN	CONFIRMED	Noun in the temporal possessive phrase "tomorrow evening's vote".
+35	28	s/JJ	s/POS	CONFIRMED	Possessive clitic in "evening's"; it is not an adjective.
+36	1	Daily/JJ	Daily/NNP	CONFIRMED	First component of the publication name "Daily FT" in a navigation list.
+36	26	feedback/RB	feedback/NN	CONFIRMED	Navigation-label noun; no adverbial function is present.
+37	14	Western/JJ	Western/NNP	CONFIRMED	Part of the official geographical name "Western Province".
+38	4	AI-powered/NNP	AI-powered/JJ	CONFIRMED	Compound adjective modifying "dashboard", not a proper noun.
+39	2	Dengue/NNP	Dengue/NN	CONFIRMED	Common disease name used as the object of "Tracking"; headline capitalization does not make it proper.
+39	3	Across/NNP	Across/IN	CONFIRMED	Preposition introducing the location "Sri Lanka".
+39	7	Verified/NNP	Verified/VBN	CONFIRMED	Participial modifier of "National Data"; headline capitalization caused the proper-noun error.
+39	8	National/NNP	National/JJ	CONFIRMED	Adjective modifying "Data" in a headline.
+39	9	Data/NNP	Data/NNS	CONFIRMED	Common plural noun in "Verified National Data", consistent with the corpus's majority treatment of "data".
+39	10	Intense/NNP	Intense/JJ	CONFIRMED	Adjective modifying "vector propagation"; capitalization reflects a new headline segment.
+40	1	Immediate/NNP	Immediate/JJ	CONFIRMED	Sentence-initial adjective modifying "community vigilance".
+40	11	advised/VBD	advised/VBN	CONFIRMED	Past participle in a headline passive with omitted auxiliary: testing is advised.
+42	24	clean/NN	clean/JJ	CONFIRMED	Predicative adjective selected by "keeping their surroundings".
+44	16	arrested/VBN	arrested/VBN	KEEP	Participial modifier within "most frequently arrested drug"; the original VBN tag is syntactically defensible.
+45	6	highlights/VBP	highlights/VBZ	CONFIRMED	Finite present verb agreeing with singular subject "surge".
+46	25	more/RBR	more/RBR	KEEP	Degree adverb modifying the adjective "breaking"; RBR is acceptable here.
+53	15	s/VBD	s/POS	CONFIRMED	Possessive clitic in "Sri Lanka's"; it is not a past-tense verb.
+54	20	s/VBZ	s/POS	CONFIRMED	Possessive clitic in "nation's"; it is not a present-tense verb.
+56	9	sitting/VBG	sitting/VBG	KEEP	Participial modifier in "sitting days"; VBG is an acceptable analysis.
+57	5	data/NN	data/NNS	CONFIRMED	Plural noun under the corpus's majority convention for "data".
+65	25	ten/JJ	ten/CD	CONFIRMED	Written cardinal number modifying "months"; Penn Treebank uses CD.
+69	5	data/NN	data/NNS	CONFIRMED	Plural noun under the corpus's majority convention for "data".
+70	1	Between/JJ	Between/IN	CONFIRMED	Preposition introducing the coordinated year range "2020 and 2023".
+72	11	lost/VBN	lost/VBD	CONFIRMED	Finite simple-past verb with subject "838 pedestrians" and no auxiliary.
+73	1	Between/JJ	Between/IN	CONFIRMED	Preposition introducing the coordinated year range "2021 and 2024".
+74	5	data/NN	data/NNS	CONFIRMED	Plural noun under the corpus's majority convention for "data".
+74	28	ten/JJ	ten/CD	CONFIRMED	Written cardinal number modifying "months"; Penn Treebank uses CD.
+76	7	used/JJ	used/JJ	KEEP	Lexicalized adjectival modifier in the superlative phrase "most used social media platform".
+77	5	data/NN	data/NNS	CONFIRMED	Plural noun under the corpus's majority convention for "data".
+77	19	ten/JJ	ten/CD	CONFIRMED	Written cardinal number modifying "months"; Penn Treebank uses CD.
+80	5	data/NN	data/NNS	CONFIRMED	Plural noun under the corpus's majority convention for "data".
+89	10	A/NNP	A/DT	CONFIRMED	Indefinite article beginning the quoted title "A Thriving Nation".
+89	14	A/NNP	A/DT	CONFIRMED	Indefinite article beginning the coordinated title phrase "A Beautiful Life".
+90	26	flak/RB	flak/NN	CONFIRMED	Head noun and direct object of "drew"; it is not an adverb.
+93	7	Constitution-making/NNP	Constitution-making/NN	CONFIRMED	Common process noun governed by "of"; capitalization is not evidence of a proper name.
+97	25	s/VBD	s/POS	CONFIRMED	Possessive clitic in "NPP's"; it is not a past-tense verb.
+99	17	Parliamentarian/JJ	Parliamentarian/NN	CONFIRMED	Common occupational noun and antecedent of "who"; it is not an adjective.
+101	5	s/VBZ	s/POS	CONFIRMED	Possessive clitic in "Supreme Court's"; it is not a present-tense verb.
+102	4	therefore/VB	therefore/RB	CONFIRMED	Sentence adverb modifying "can proceed"; it is not a verb.
+102	8	subject/NN	subject/JJ	CONFIRMED	Predicative adjective in the fixed construction "subject to".
+104	18	Justices/NNP	Justices/NNPS	CONFIRMED	Plural proper title introducing several named justices.
+105	2	proposed/VBN	proposed/VBN	KEEP	Past-participial modifier of "22nd Amendment"; VBN is acceptable.
+106	8	proposed/VBN	proposed/VBN	KEEP	Past-participial modifier of "amendment"; VBN is acceptable.
+108	1	Increase/NNP	Increase/VB	CONFIRMED	Base-form imperative/list-item verb taking "the retirement age" as its object.
+109	1	Increase/NNP	Increase/VB	CONFIRMED	Base-form imperative/list-item verb taking "the retirement age" as its object.
+110	10	upon/JJ	upon/IN	CONFIRMED	Preposition introducing the noun phrase "completion of six years".
+111	15	incumbent/VB	incumbent/JJ	CONFIRMED	Adjective modifying the title "Chief Justice"; it is not a verb.
+112	1	Increase/VB	Increase/VB	KEEP	Base-form imperative/list-item verb is correctly tagged despite headline capitalization.
+115	1	Increase/VB	Increase/VB	KEEP	Base-form imperative/list-item verb is correctly tagged.
+115	5	Judges/NNP	Judges/NNS	CONFIRMED	Common plural office noun in a general numerical provision, not a named group.
+115	8	High/JJ	High/NNP	CONFIRMED	Part of the official institution name "High Court".
+116	1	Increase/NNP	Increase/VB	CONFIRMED	Base-form imperative/list-item verb taking "the retirement age" as its object.
+116	6	High/JJ	High/NNP	CONFIRMED	Part of the official institution name "High Court".
+117	1	Increase/NNP	Increase/VB	CONFIRMED	Base-form imperative/list-item verb taking "the retirement age" as its object.
+118	4	Fifteen/JJ	Fifteen/CD	CONFIRMED	Written cardinal number quantifying "people"; Penn Treebank uses CD.
+118	11	s/NN	s/POS	CONFIRMED	Possessive clitic in "Sri Lanka's"; the preceding apostrophe was split by mojibake.
+120	14	accused/VBD	accused/NNS	CONFIRMED	Plural nominal use after "the 24"; it denotes defendants rather than a past-tense action.
+121	4	Judges/NNP	Judges/NNPS	CONFIRMED	Plural proper title introducing several named judges.
+122	1	Defence/NNP	Defence/NN	CONFIRMED	Sentence-initial common attributive noun in "Defence counsel".
+122	12	accused/VBN	accused/NNS	CONFIRMED	Plural nominal use in "seven of the accused"; it denotes defendants.
+125	5	accused/VBN	accused/NNS	CONFIRMED	Plural nominal use in "one of the accused"; it denotes the defendant group.
+130	20	blamed/VBD	blamed/VBN	CONFIRMED	Past participle in the reduced passive complement "with ... President ... and ... Prime Minister blamed".
+131	35	s/NN	s/POS	CONFIRMED	Possessive clitic in "panel's findings".
+132	2	High/JJ	High/NNP	CONFIRMED	Part of the official institution name "High Court".
+132	6	Justices/NNS	Justices/NNPS	CONFIRMED	Plural proper title introducing several named justices.
+133	9	accused/VBN	accused/NNS	CONFIRMED	Plural nominal head quantified by "15"; it denotes defendants.
+135	10	accused/VBN	accused/NNS	CONFIRMED	Plural nominal head quantified by "nine"; it denotes defendants.
+136	7	Catholic/NNP	Catholic/JJ	CONFIRMED	Adjective modifying "churches", consistent with the same phrase elsewhere in the corpus.
+139	12	accused/VBD	accused/NNS	CONFIRMED	Plural nominal head quantified by "24"; it denotes defendants.
+140	21	accused/VBD	accused/NNS	CONFIRMED	Plural nominal head quantified by "24"; it denotes defendants.
+141	10	Trial-at-Bar/NN	Trial-at-Bar/NNP	CONFIRMED	Name of the specific court formation, consistent with other occurrences in the article.
+143	20	accused/VBN	accused/NNS	CONFIRMED	Plural nominal use after "the" in a case involving multiple defendants.
+144	11	accused/JJ	accused/NNS	CONFIRMED	Plural nominal use after "the"; it denotes the defendants against whom matters were presented.
+144	26	training/VBG	training/NN	CONFIRMED	Noun head in the compound "weapons training", not a progressive participle.
+144	27	prior/RB	prior/JJ	CONFIRMED	Adjective in the fixed sequence "prior to" modifying the preceding activities.
+147	15	accused/VBN	accused/NNS	CONFIRMED	Plural nominal complement in "each of the accused"; it denotes the defendant group.
+148	12	accused/VBN	accused/NNS	CONFIRMED	Plural nominal head quantified by "15"; it denotes defendants.
+149	20	accused/VBN	accused/NNS	CONFIRMED	Plural nominal head quantified by "nine"; it denotes defendants.
+150	4	accused/VBN	accused/NNS	CONFIRMED	Plural nominal head quantified by "nine"; it denotes defendants.
