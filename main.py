@@ -10,6 +10,7 @@ from pcfg_train import train_pcfg, parse_with_oov_fallback, parse_tag_sequence, 
 
 _pcfg_model = None
 
+
 class Tee:
     def __init__(self, *files):
         self.files = files
@@ -31,7 +32,6 @@ def init_worker(grammar):
 
 def process_sentence(args):
     idx, sentence_str = args
-    print(f"{idx}: processing sentence {sentence_str}")
     raw_tokens = sentence_str.strip().split()
     if not raw_tokens:
         return None
@@ -51,7 +51,7 @@ def process_sentence(args):
     tree = parse_with_oov_fallback(_pcfg_model, words)
 
     if tree is None:
-        tree = parse_tag_sequence(_pcfg_model, gold_tags)
+        tree = parse_tag_sequence(_pcfg_model, gold_tags, words)
 
     if tree:
         p, r, f1, acc = evaluate_parse(tree, gold_tags, words)

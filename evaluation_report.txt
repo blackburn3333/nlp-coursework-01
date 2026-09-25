@@ -3,162 +3,162 @@
 PCFG model compiled and saved to 'pcfg_grammar.json'.
 
 === Step 3: Parsing Test Sentences ===
-Sentence   1: Parse Failed
-Sentence   2: Parse Failed
-Sentence   3: Parse Failed
-Sentence   4: Parse Failed
-Sentence   5: Parse Failed
-Sentence   6: Parse Failed
-Sentence   7: Parse Failed
-Sentence   8: Parse Failed
-Sentence   9: Parse Failed
-Sentence  10: Parse Failed
-Sentence  11: Parse Failed
-Sentence  12: Parse Failed
-Sentence  13: Parse Failed
-Sentence  14: Parse Failed
-Sentence  15: Parse Failed
-Sentence  16: Parse Failed
-Sentence  17: Parse Failed
-Sentence  18: Parse Failed
-Sentence  19: Parse Failed
-Sentence  20: Parse Failed
-Sentence  21: Parse Failed
-Sentence  22: Parse Failed
-Sentence  23: Parse Failed
-Sentence  24: Parse Failed
-Sentence  25: Parse Failed
-Sentence  26: Parse Failed
-Sentence  27: Parse Failed
-Sentence  28: Parse Failed
-Sentence  29: Parse Failed
-Sentence  30: Parse Failed
-Sentence  31: Parse Failed
-Sentence  32: Parse Failed
-Sentence  33: Parse Failed
-Sentence  34: Parse Failed
-Sentence  35: Parse Failed
-Sentence  36: Parse Failed
-Sentence  37: Parse Failed
-Sentence  38: Parse Failed
-Sentence  39: Parse Failed
-Sentence  40: Parse Failed
-Sentence  41: Parse Failed
-Sentence  42: Parse Failed
-Sentence  43: Parse Failed
-Sentence  44: Parse Failed
-Sentence  45: Parse Failed
-Sentence  46: Parse Failed
-Sentence  47: Parse Failed
-Sentence  48: Parse Failed
-Sentence  49: Parse Failed
-Sentence  50: Parse Failed
-Sentence  51: Parse Failed
-Sentence  52: Parse Failed
-Sentence  53: Parse Failed
-Sentence  54: Parse Failed
-Sentence  55: Parse Failed
-Sentence  56: Parse Failed
-Sentence  57: Parse Failed
-Sentence  58: Parse Failed
-Sentence  59: Parse Failed
-Sentence  60: Parse Failed
-Sentence  61: Parse Failed
-Sentence  62: Parse Failed
-Sentence  63: Parse Failed
-Sentence  64: Parse Failed
-Sentence  65: Parse Failed
-Sentence  66: Parse Failed
-Sentence  67: Parse Failed
-Sentence  68: Parse Failed
-Sentence  69: Parse Failed
-Sentence  70: Parse Failed
-Sentence  71: Parse Failed
-Sentence  72: Parse Failed
-Sentence  73: Parse Failed
-Sentence  74: Parse Failed
-Sentence  75: Parse Failed
-Sentence  76: Parse Failed
-Sentence  77: Parse Failed
-Sentence  78: Parse Failed
-Sentence  79: Parse Failed
-Sentence  80: Parse Failed
-Sentence  81: Parse Failed
-Sentence  82: Parse Failed
-Sentence  83: Parse Failed
-Sentence  84: Parse Failed
-Sentence  85: Parse Failed
-Sentence  86: Parse Failed
-Sentence  87: Parse Failed
-Sentence  88: Parse Failed
-Sentence  89: Parse Failed
-Sentence  90: Parse Failed
-Sentence  91: Parse Failed
-Sentence  92: Parse Failed
-Sentence  93: Parse Failed
-Sentence  94: Parse Failed
-Sentence  95: Parse Failed
-Sentence  96: Parse Failed
-Sentence  97: Parse Failed
-Sentence  98: Parse Failed
-Sentence  99: Parse Failed
-Sentence 100: Parse Failed
-Sentence 101: Parse Failed
-Sentence 102: Parse Failed
-Sentence 103: Parse Failed
-Sentence 104: Parse Failed
-Sentence 105: Parse Failed
-Sentence 106: Parse Failed
-Sentence 107: Parse Failed
-Sentence 108: Parse Failed
-Sentence 109: Parse Failed
-Sentence 110: Parse Failed
-Sentence 111: Parse Failed
-Sentence 112: Parse Failed
-Sentence 113: Parse Failed
-Sentence 114: Parse Failed
-Sentence 115: Parse Failed
-Sentence 116: Parse Failed
-Sentence 117: Parse Failed
-Sentence 118: Parse Failed
-Sentence 119: Parse Failed
-Sentence 120: Parse Failed
-Sentence 121: Parse Failed
-Sentence 122: Parse Failed
-Sentence 123: Parse Failed
-Sentence 124: Parse Failed
-Sentence 125: Parse Failed
-Sentence 126: Parse Failed
-Sentence 127: Parse Failed
-Sentence 128: Parse Failed
-Sentence 129: Parse Failed
-Sentence 130: Parse Failed
-Sentence 131: Parse Failed
-Sentence 132: Parse Failed
-Sentence 133: Parse Failed
-Sentence 134: Parse Failed
-Sentence 135: Parse Failed
-Sentence 136: Parse Failed
-Sentence 137: Parse Failed
-Sentence 138: Parse Failed
-Sentence 139: Parse Failed
-Sentence 140: Parse Failed
-Sentence 141: Parse Failed
-Sentence 142: Parse Failed
-Sentence 143: Parse Failed
-Sentence 144: Parse Failed
-Sentence 145: Parse Failed
-Sentence 146: Parse Failed
-Sentence 147: Parse Failed
-Sentence 148: Parse Failed
-Sentence 149: Parse Failed
-Sentence 150: Parse Failed
+Sentence   1: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 4.8%
+Sentence   2: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.5%
+Sentence   3: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 13.2%
+Sentence   4: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 3.0%
+Sentence   5: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.0%
+Sentence   6: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 3.2%
+Sentence   7: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 16.7%
+Sentence   8: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.7%
+Sentence   9: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 3.8%
+Sentence  10: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.7%
+Sentence  11: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 15.4%
+Sentence  12: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.0%
+Sentence  13: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.7%
+Sentence  14: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.1%
+Sentence  15: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 3.2%
+Sentence  16: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 2.9%
+Sentence  17: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 3.6%
+Sentence  18: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.5%
+Sentence  19: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.2%
+Sentence  20: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.4%
+Sentence  21: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 4.0%
+Sentence  22: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 14.3%
+Sentence  23: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 3.1%
+Sentence  24: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.1%
+Sentence  25: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.4%
+Sentence  26: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.8%
+Sentence  27: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 3.6%
+Sentence  28: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 2.9%
+Sentence  29: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.8%
+Sentence  30: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 4.3%
+Sentence  31: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 4.5%
+Sentence  32: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 4.3%
+Sentence  33: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 3.2%
+Sentence  34: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.3%
+Sentence  35: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 3.3%
+Sentence  36: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 0.0%
+Sentence  37: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.7%
+Sentence  38: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 12.0%
+Sentence  39: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.1%
+Sentence  40: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 25.0%
+Sentence  41: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.6%
+Sentence  42: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.8%
+Sentence  43: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 23.8%
+Sentence  44: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 12.5%
+Sentence  45: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.1%
+Sentence  46: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.4%
+Sentence  47: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.4%
+Sentence  48: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 16.0%
+Sentence  49: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.7%
+Sentence  50: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 11.1%
+Sentence  51: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 10.7%
+Sentence  52: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 15.8%
+Sentence  53: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.1%
+Sentence  54: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.7%
+Sentence  55: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 12.1%
+Sentence  56: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.1%
+Sentence  57: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.9%
+Sentence  58: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.7%
+Sentence  59: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 4.8%
+Sentence  60: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.1%
+Sentence  61: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.7%
+Sentence  62: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.0%
+Sentence  63: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.1%
+Sentence  64: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.1%
+Sentence  65: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 10.8%
+Sentence  66: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 4.3%
+Sentence  67: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.7%
+Sentence  68: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 13.6%
+Sentence  69: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 13.3%
+Sentence  70: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 17.4%
+Sentence  71: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.1%
+Sentence  72: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 10.5%
+Sentence  73: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 13.3%
+Sentence  74: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.2%
+Sentence  75: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.0%
+Sentence  76: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 14.3%
+Sentence  77: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.4%
+Sentence  78: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 15.4%
+Sentence  79: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 17.4%
+Sentence  80: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.3%
+Sentence  81: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 18.2%
+Sentence  82: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.1%
+Sentence  83: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 10.0%
+Sentence  84: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 11.8%
+Sentence  85: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 12.5%
+Sentence  86: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.3%
+Sentence  87: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.2%
+Sentence  88: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.5%
+Sentence  89: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 16.2%
+Sentence  90: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 14.3%
+Sentence  91: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.3%
+Sentence  92: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 11.1%
+Sentence  93: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.9%
+Sentence  94: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.3%
+Sentence  95: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 10.0%
+Sentence  96: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.3%
+Sentence  97: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 3.8%
+Sentence  98: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 13.6%
+Sentence  99: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.1%
+Sentence 100: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.1%
+Sentence 101: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 4.2%
+Sentence 102: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.6%
+Sentence 103: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 4.3%
+Sentence 104: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 10.0%
+Sentence 105: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 3.1%
+Sentence 106: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.2%
+Sentence 107: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.1%
+Sentence 108: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.1%
+Sentence 109: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.7%
+Sentence 110: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.0%
+Sentence 111: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.6%
+Sentence 112: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.9%
+Sentence 113: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 3.3%
+Sentence 114: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 10.0%
+Sentence 115: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.1%
+Sentence 116: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.1%
+Sentence 117: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.7%
+Sentence 118: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.9%
+Sentence 119: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 15.0%
+Sentence 120: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.1%
+Sentence 121: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 15.4%
+Sentence 122: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 8.6%
+Sentence 123: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.9%
+Sentence 124: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 15.4%
+Sentence 125: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 14.3%
+Sentence 126: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 11.1%
+Sentence 127: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 4.5%
+Sentence 128: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 10.5%
+Sentence 129: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.1%
+Sentence 130: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.5%
+Sentence 131: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 5.6%
+Sentence 132: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 11.1%
+Sentence 133: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 13.3%
+Sentence 134: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.1%
+Sentence 135: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.5%
+Sentence 136: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 17.2%
+Sentence 137: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 10.0%
+Sentence 138: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 20.7%
+Sentence 139: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.1%
+Sentence 140: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.7%
+Sentence 141: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.7%
+Sentence 142: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 11.4%
+Sentence 143: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.5%
+Sentence 144: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 6.1%
+Sentence 145: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 7.7%
+Sentence 146: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 11.1%
+Sentence 147: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.1%
+Sentence 148: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 15.4%
+Sentence 149: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 9.5%
+Sentence 150: Parsed | Precision: 0.00 | Recall: 0.00 | F1: 0.00 | Tag Acc: 11.1%
 
 ================ FINAL EVALUATION REPORT ================
 Total Sentences Tested        : 150
-Successfully Parsed Sentences : 0 (0.00%)
+Successfully Parsed Sentences : 150 (100.00%)
 Average Labeled Precision (LP): 0.0000
 Average Labeled Recall (LR)   : 0.0000
 Average F1-Score              : 0.0000
-Average POS Tagging Accuracy  : 0.00%
+Average POS Tagging Accuracy  : 8.80%
 =========================================================

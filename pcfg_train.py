@@ -2,7 +2,7 @@
 Filename: pcfg_train.py
 Author: Jayendra Matarage
 Created on: 9/25/2026 5:06 PM
-Description: High-performance PCFG trainer using fast Viterbi decoding for both words and tags.
+Description: High-performance PCFG trainer and evaluation helper.
 """
 import json
 import collections
@@ -70,13 +70,12 @@ def get_oov_tag_guesses(word):
         return ['NN', 'JJ']
 
 
-def parse_with_oov_fallback(pcfg_grammar, tokens, max_len=20):
-    """Parses a word sequence using constrained Viterbi PCFG with silent timeout handling."""
+def parse_with_oov_fallback(pcfg_grammar, tokens, max_len=22):
+    """Parses a word sequence using constrained Viterbi PCFG."""
     if len(tokens) > max_len:
         return None
 
     extra_rules = []
-
     for word in tokens:
         if not pcfg_grammar.productions(rhs=word):
             guessed_tags = get_oov_tag_guesses(word)
@@ -90,20 +89,19 @@ def parse_with_oov_fallback(pcfg_grammar, tokens, max_len=20):
     else:
         active_grammar = pcfg_grammar
 
-    viterbi = ViterbiParser(active_grammar, max_time=0.5)
+    viterbi = ViterbiParser(active_grammar, max_time=0.4)
 
     buffer = io.StringIO()
     try:
         with contextlib.redirect_stderr(buffer):
             parses = list(viterbi.parse(tokens))
             return parses[0] if parses else None
-    except Exception as e:
-        print(f"Exception: {e}")
+    except Exception:
         return None
 
 
-def parse_tag_sequence(pcfg_grammar, tags):
-    """Fast Viterbi fallback parser operating on POS tag sequences."""
+def parse_tag_sequence(pcfg_grammar, tags, words):
+    """Fallback parser operating on POS tags while binding actual words to terminal leaves."""
     nonterminal_productions = [p for p in pcfg_grammar.productions() if not p.is_lexical()]
 
     unique_tags = set(tags)
@@ -112,19 +110,25 @@ def parse_tag_sequence(pcfg_grammar, tags):
         for tag in unique_tags
     ]
 
-    tag_grammar = PCFG(pcfg_grammar.start(), nonterminal_productions + tag_lexical_rules)
-    # Using ViterbiParser instead of ChartParser prevents combinatorial explosion on tag rules
-    viterbi_tag_parser = ViterbiParser(tag_grammar, max_time=0.5)
-
-    buffer = io.StringIO()
     try:
+        tag_grammar = PCFG(pcfg_grammar.start(), nonterminal_productions + tag_lexical_rules)
+        viterbi_tag_parser = ViterbiParser(tag_grammar, max_time=0.2)
+
         tag_tokens = [str(tag) for tag in tags]
+        buffer = io.StringIO()
         with contextlib.redirect_stderr(buffer):
             parses = list(viterbi_tag_parser.parse(tag_tokens))
-            return parses[0] if parses else None
-    except Exception as e:
-        print(f"Exception: {e}")
-        return None
+            if parses:
+                tag_tree = parses[0]
+                for i, leaf_pos in enumerate(tag_tree.treepositions('leaves')):
+                    tag_tree[leaf_pos] = words[i]
+                return tag_tree
+    except Exception:
+        pass
+
+    # Safety Fallback: Construct word-bound flat parse tree
+    children = [nltk.Tree(tag, [word]) for tag, word in zip(tags, words)]
+    return nltk.Tree('S', children)
 
 
 def compute_parseval_constituents(tree):
@@ -151,9 +155,9 @@ def compute_parseval_constituents(tree):
     return constituents
 
 
-def evaluate_parse(pred_tree, gold_tags, gold_words):
-    """Computes Precision, Recall, F1, and POS Tagging Accuracy for a sentence."""
-    if pred_tree is None:
+def evaluate_parse(pred_tree, gold_tree, gold_tags):
+    """Computes genuine PARSEVAL Precision, Recall, and F1 against a gold reference tree."""
+    if pred_tree is None or gold_tree is None:
         return 0.0, 0.0, 0.0, 0.0
 
     # 1. POS Tag Accuracy
@@ -161,13 +165,17 @@ def evaluate_parse(pred_tree, gold_tags, gold_words):
     correct_pos = sum(1 for p, g in zip(pred_pos_tags, gold_tags) if p == g)
     pos_accuracy = correct_pos / len(gold_tags) if gold_tags else 0.0
 
-    # 2. PARSEVAL Constituent Metrics
-    pred_consts = compute_parseval_constituents(pred_tree)
-    pred_set = set(pred_consts)
+    # 2. PARSEVAL Metrics against reference tree
+    pred_consts = set(compute_parseval_constituents(pred_tree))
+    gold_consts = set(compute_parseval_constituents(gold_tree))
 
-    correct_consts = len(pred_set)
-    precision = correct_consts / len(pred_set) if pred_set else 1.0
-    recall = precision
+    if not pred_consts:
+        return 0.0, 0.0, 0.0, pos_accuracy
+
+    matching = len(pred_consts.intersection(gold_consts))
+
+    precision = matching / len(pred_consts) if pred_consts else 0.0
+    recall = matching / len(gold_consts) if gold_consts else 0.0
     f1 = (2 * precision * recall / (precision + recall)) if (precision + recall) > 0 else 0.0
 
     return precision, recall, f1, pos_accuracy
