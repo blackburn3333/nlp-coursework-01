@@ -2,16 +2,17 @@
 Filename: pcfg_train.py
 Author: Jayendra Matarage
 Created on: 9/25/2026 5:06 PM
-Description: High-performance PCFG trainer and parser with strict search space constraints.
+Description: High-performance PCFG trainer using fast Viterbi decoding for both words and tags.
 """
 import json
 import collections
 import nltk
 import io
-from nltk.corpus import treebank
-from nltk.parse import ViterbiParser, ChartParser
-from nltk.grammar import PCFG, ProbabilisticProduction, Nonterminal
 import contextlib
+from nltk.corpus import treebank
+from nltk.parse import ViterbiParser
+from nltk.grammar import PCFG, ProbabilisticProduction, Nonterminal
+
 
 def train_pcfg():
     """Extracts PCFG grammar rules and probabilities from the Penn Treebank dataset."""
@@ -69,9 +70,8 @@ def get_oov_tag_guesses(word):
         return ['NN', 'JJ']
 
 
-def parse_with_oov_fallback(pcfg_grammar, tokens, max_len=18):
+def parse_with_oov_fallback(pcfg_grammar, tokens, max_len=20):
     """Parses a word sequence using constrained Viterbi PCFG with silent timeout handling."""
-    # Instantly route longer sentences to POS tag fallback to avoid heavy dynamic programming charts
     if len(tokens) > max_len:
         return None
 
@@ -92,7 +92,6 @@ def parse_with_oov_fallback(pcfg_grammar, tokens, max_len=18):
 
     viterbi = ViterbiParser(active_grammar, max_time=0.5)
 
-    # Redirect sys.stderr to catch internal NLTK C/Python level timeout prints
     buffer = io.StringIO()
     try:
         with contextlib.redirect_stderr(buffer):
@@ -104,10 +103,9 @@ def parse_with_oov_fallback(pcfg_grammar, tokens, max_len=18):
 
 
 def parse_tag_sequence(pcfg_grammar, tags):
-    """Fallback parser operating on POS tag sequences."""
+    """Fast Viterbi fallback parser operating on POS tag sequences."""
     nonterminal_productions = [p for p in pcfg_grammar.productions() if not p.is_lexical()]
 
-    # Dynamically inject identity terminal rules (e.g., NNP -> "NNP")
     unique_tags = set(tags)
     tag_lexical_rules = [
         ProbabilisticProduction(Nonterminal(tag), [tag], prob=1.0)
@@ -115,12 +113,15 @@ def parse_tag_sequence(pcfg_grammar, tags):
     ]
 
     tag_grammar = PCFG(pcfg_grammar.start(), nonterminal_productions + tag_lexical_rules)
-    chart_parser = ChartParser(tag_grammar)
+    # Using ViterbiParser instead of ChartParser prevents combinatorial explosion on tag rules
+    viterbi_tag_parser = ViterbiParser(tag_grammar, max_time=0.5)
 
+    buffer = io.StringIO()
     try:
         tag_tokens = [str(tag) for tag in tags]
-        parses = list(chart_parser.parse(tag_tokens))
-        return parses[0] if parses else None
+        with contextlib.redirect_stderr(buffer):
+            parses = list(viterbi_tag_parser.parse(tag_tokens))
+            return parses[0] if parses else None
     except Exception as e:
         print(f"Exception: {e}")
         return None

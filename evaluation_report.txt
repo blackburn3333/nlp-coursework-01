@@ -1,9 +1,164 @@
 
 === Training PCFG Model on Penn Treebank ===
-
-=== Step 2: Extracting Grammar & Building PCFG Model ===
 PCFG model compiled and saved to 'pcfg_grammar.json'.
 
-=== Step 3: Parsing & Evaluating Test Sentences ===
-Parsing: Former/JJ Krrish/NNP Group/NNP Director/NNP Janaki/NNP Siriwardena/NNP has/VBZ been/VBN arrested/VBN by/IN the/DT Commission/NNP to/TO Investigate/NNP Allegations/NNP of/IN Bribery/NNP or/CC Corruption/NNP  CIABOC/NNP  ./.
+=== Step 3: Parsing Test Sentences ===
+Sentence   1: Parse Failed
+Sentence   2: Parse Failed
+Sentence   3: Parse Failed
+Sentence   4: Parse Failed
+Sentence   5: Parse Failed
+Sentence   6: Parse Failed
+Sentence   7: Parse Failed
+Sentence   8: Parse Failed
+Sentence   9: Parse Failed
+Sentence  10: Parse Failed
+Sentence  11: Parse Failed
+Sentence  12: Parse Failed
+Sentence  13: Parse Failed
+Sentence  14: Parse Failed
+Sentence  15: Parse Failed
+Sentence  16: Parse Failed
+Sentence  17: Parse Failed
+Sentence  18: Parse Failed
+Sentence  19: Parse Failed
+Sentence  20: Parse Failed
+Sentence  21: Parse Failed
+Sentence  22: Parse Failed
+Sentence  23: Parse Failed
+Sentence  24: Parse Failed
+Sentence  25: Parse Failed
+Sentence  26: Parse Failed
+Sentence  27: Parse Failed
+Sentence  28: Parse Failed
+Sentence  29: Parse Failed
+Sentence  30: Parse Failed
+Sentence  31: Parse Failed
+Sentence  32: Parse Failed
+Sentence  33: Parse Failed
+Sentence  34: Parse Failed
+Sentence  35: Parse Failed
+Sentence  36: Parse Failed
+Sentence  37: Parse Failed
+Sentence  38: Parse Failed
+Sentence  39: Parse Failed
+Sentence  40: Parse Failed
+Sentence  41: Parse Failed
+Sentence  42: Parse Failed
+Sentence  43: Parse Failed
+Sentence  44: Parse Failed
+Sentence  45: Parse Failed
+Sentence  46: Parse Failed
+Sentence  47: Parse Failed
+Sentence  48: Parse Failed
+Sentence  49: Parse Failed
+Sentence  50: Parse Failed
+Sentence  51: Parse Failed
+Sentence  52: Parse Failed
+Sentence  53: Parse Failed
+Sentence  54: Parse Failed
+Sentence  55: Parse Failed
+Sentence  56: Parse Failed
+Sentence  57: Parse Failed
+Sentence  58: Parse Failed
+Sentence  59: Parse Failed
+Sentence  60: Parse Failed
+Sentence  61: Parse Failed
+Sentence  62: Parse Failed
+Sentence  63: Parse Failed
+Sentence  64: Parse Failed
+Sentence  65: Parse Failed
+Sentence  66: Parse Failed
+Sentence  67: Parse Failed
+Sentence  68: Parse Failed
+Sentence  69: Parse Failed
+Sentence  70: Parse Failed
+Sentence  71: Parse Failed
+Sentence  72: Parse Failed
+Sentence  73: Parse Failed
+Sentence  74: Parse Failed
+Sentence  75: Parse Failed
+Sentence  76: Parse Failed
+Sentence  77: Parse Failed
+Sentence  78: Parse Failed
+Sentence  79: Parse Failed
+Sentence  80: Parse Failed
+Sentence  81: Parse Failed
+Sentence  82: Parse Failed
+Sentence  83: Parse Failed
+Sentence  84: Parse Failed
+Sentence  85: Parse Failed
+Sentence  86: Parse Failed
+Sentence  87: Parse Failed
+Sentence  88: Parse Failed
+Sentence  89: Parse Failed
+Sentence  90: Parse Failed
+Sentence  91: Parse Failed
+Sentence  92: Parse Failed
+Sentence  93: Parse Failed
+Sentence  94: Parse Failed
+Sentence  95: Parse Failed
+Sentence  96: Parse Failed
+Sentence  97: Parse Failed
+Sentence  98: Parse Failed
+Sentence  99: Parse Failed
+Sentence 100: Parse Failed
+Sentence 101: Parse Failed
+Sentence 102: Parse Failed
+Sentence 103: Parse Failed
+Sentence 104: Parse Failed
+Sentence 105: Parse Failed
+Sentence 106: Parse Failed
+Sentence 107: Parse Failed
+Sentence 108: Parse Failed
+Sentence 109: Parse Failed
+Sentence 110: Parse Failed
+Sentence 111: Parse Failed
+Sentence 112: Parse Failed
+Sentence 113: Parse Failed
+Sentence 114: Parse Failed
+Sentence 115: Parse Failed
+Sentence 116: Parse Failed
+Sentence 117: Parse Failed
+Sentence 118: Parse Failed
+Sentence 119: Parse Failed
+Sentence 120: Parse Failed
+Sentence 121: Parse Failed
+Sentence 122: Parse Failed
+Sentence 123: Parse Failed
+Sentence 124: Parse Failed
+Sentence 125: Parse Failed
+Sentence 126: Parse Failed
+Sentence 127: Parse Failed
+Sentence 128: Parse Failed
+Sentence 129: Parse Failed
+Sentence 130: Parse Failed
+Sentence 131: Parse Failed
+Sentence 132: Parse Failed
+Sentence 133: Parse Failed
+Sentence 134: Parse Failed
+Sentence 135: Parse Failed
+Sentence 136: Parse Failed
+Sentence 137: Parse Failed
+Sentence 138: Parse Failed
+Sentence 139: Parse Failed
+Sentence 140: Parse Failed
+Sentence 141: Parse Failed
+Sentence 142: Parse Failed
+Sentence 143: Parse Failed
+Sentence 144: Parse Failed
+Sentence 145: Parse Failed
+Sentence 146: Parse Failed
+Sentence 147: Parse Failed
+Sentence 148: Parse Failed
+Sentence 149: Parse Failed
+Sentence 150: Parse Failed
 
+================ FINAL EVALUATION REPORT ================
+Total Sentences Tested        : 150
+Successfully Parsed Sentences : 0 (0.00%)
+Average Labeled Precision (LP): 0.0000
+Average Labeled Recall (LR)   : 0.0000
+Average F1-Score              : 0.0000
+Average POS Tagging Accuracy  : 0.00%
+=========================================================
