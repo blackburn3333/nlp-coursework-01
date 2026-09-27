@@ -1,181 +1,327 @@
 """
-Filename: pcfg_train.py
 Author: Jayendra Matarage
-Created on: 9/25/2026 5:06 PM
-Description: High-performance PCFG trainer and evaluation helper.
+Created on: 9/25/2026 1:23 PM
+Description:
 """
-import json
+from __future__ import annotations
+
 import collections
-import nltk
-import io
-import contextlib
+import copy
+import json
+import math
+import pickle
+from pathlib import Path
+
 from nltk.corpus import treebank
-from nltk.parse import ViterbiParser
-from nltk.grammar import PCFG, ProbabilisticProduction, Nonterminal
+from nltk.grammar import Nonterminal, induce_pcfg
+from nltk.tag import AffixTagger, BigramTagger, DefaultTagger, UnigramTagger
+from nltk.tree import Tree
 
 
-def train_pcfg():
-    """Extracts PCFG grammar rules and probabilities from the Penn Treebank dataset."""
-    parsed_sents = treebank.parsed_sents()
+PROJECT_DIR = Path(__file__).resolve().parent
+GRAMMAR_JSON_PATH = PROJECT_DIR / "pcfg_grammar.json"
+GRAMMAR_PICKLE_PATH = PROJECT_DIR / "pcfg_grammar.pkl"
+TAGGER_PICKLE_PATH = PROJECT_DIR / "pos_tagger.pkl"
+
+
+def _strip_function_label(label: str) -> str:
+    """Reduce phrase labels such as ``NP-SBJ`` to their base category."""
+    if label.startswith("-"):
+        return label
+    return label.split("-", 1)[0].split("=", 1)[0]
+
+
+def _clean_tree(node: Tree) -> Tree | None:
+    """Copy a PTB tree while removing traces and normalizing phrase labels."""
+    if node.label() == "-NONE-":
+        return None
+
+    children = []
+    for child in node:
+        if isinstance(child, Tree):
+            cleaned_child = _clean_tree(child)
+            if cleaned_child is not None and len(cleaned_child) > 0:
+                children.append(cleaned_child)
+        else:
+            children.append(child)
+
+    if not children:
+        return None
+
+    # Preserve POS labels on preterminals; normalize phrase labels only.
+    label = node.label() if all(not isinstance(c, Tree) for c in children) else _strip_function_label(node.label())
+    return Tree(label, children)
+
+
+def _to_tag_tree(source_tree: Tree) -> Tree | None:
+    """Convert lexical leaves to their gold POS symbols for grammar training."""
+    cleaned = _clean_tree(copy.deepcopy(source_tree))
+    if cleaned is None:
+        return None
+
+    for leaf_position in cleaned.treepositions("leaves"):
+        preterminal = cleaned[leaf_position[:-1]]
+        cleaned[leaf_position] = preterminal.label()
+
+    # A shared root allows every training-tree root type to contribute.
+    wrapped = Tree("TOP", [cleaned])
+    wrapped.collapse_unary(
+        collapsePOS=False,
+        collapseRoot=False,
+        joinChar="+",
+    )
+    wrapped.chomsky_normal_form(horzMarkov=2)
+    return wrapped
+
+
+def train_pos_tagger(tagged_sentences):
+    """Train a statistical backoff tagger using only Penn Treebank labels."""
+    tag_counts = collections.Counter(
+        tag for sentence in tagged_sentences for _, tag in sentence
+    )
+    if not tag_counts:
+        raise ValueError("Penn Treebank supplied no tagged training tokens")
+
+    default = DefaultTagger(tag_counts.most_common(1)[0][0])
+    affix = AffixTagger(tagged_sentences, backoff=default)
+    unigram = UnigramTagger(tagged_sentences, backoff=affix)
+    return BigramTagger(tagged_sentences, backoff=unigram)
+
+
+def train_structural_pcfg(parsed_sentences):
+    """Induce a binarized PCFG whose terminals are POS-tag symbols."""
     productions = []
-    for tree in parsed_sents:
-        productions.extend(tree.productions())
 
-    lhs_counts = collections.Counter()
-    rule_counts = collections.Counter()
+    for source_tree in parsed_sentences:
+        tag_tree = _to_tag_tree(source_tree)
+        if tag_tree is not None:
+            productions.extend(tag_tree.productions())
 
-    for prod in productions:
-        lhs_counts[prod.lhs()] += 1
-        rule_counts[prod] += 1
+    if not productions:
+        raise ValueError("Penn Treebank supplied no grammar productions")
 
-    pcfg_productions = []
-    grammar_dict = {}
-
-    for prod, count in rule_counts.items():
-        prob = count / lhs_counts[prod.lhs()]
-        pcfg_productions.append(ProbabilisticProduction(prod.lhs(), prod.rhs(), prob=prob))
-
-        lhs_str = str(prod.lhs())
-        rhs_str = [str(sym) for sym in prod.rhs()]
-        if lhs_str not in grammar_dict:
-            grammar_dict[lhs_str] = []
-        grammar_dict[lhs_str].append({'rhs': rhs_str, 'prob': prob})
-
-    start_symbol = Nonterminal('S')
-    grammar = PCFG(start_symbol, pcfg_productions)
-
-    with open('pcfg_grammar.json', 'w', encoding='utf-8') as f:
-        json.dump(grammar_dict, f, indent=2)
-
-    return grammar
+    return induce_pcfg(Nonterminal("TOP"), productions)
 
 
-def get_oov_tag_guesses(word):
-    """Morphological heuristic tag assigner for unknown (OOV) words."""
-    if word[0].isupper():
-        return ['NNP', 'NN']
-    elif word.isdigit() or any(char.isdigit() for char in word):
-        return ['CD']
-    elif word.endswith('ing'):
-        return ['VBG', 'JJ']
-    elif word.endswith('ed'):
-        return ['VBD', 'VBN']
-    elif word.endswith('ly'):
-        return ['RB']
-    elif word.endswith('s'):
-        return ['NNS', 'VBZ']
-    elif word.endswith('able') or word.endswith('ible') or word.endswith('al'):
-        return ['JJ']
-    else:
-        return ['NN', 'JJ']
+def _save_grammar_json(grammar, output_path: Path = GRAMMAR_JSON_PATH) -> None:
+    """Save human-readable PCFG rules and their learned probabilities."""
+    serialized_rules = []
+
+    for production in grammar.productions():
+        rhs = [
+            {
+                "type": "nonterminal" if isinstance(symbol, Nonterminal) else "terminal",
+                "value": str(symbol),
+            }
+            for symbol in production.rhs()
+        ]
+        serialized_rules.append(
+            {
+                "lhs": str(production.lhs()),
+                "rhs": rhs,
+                "probability": production.prob(),
+            }
+        )
+
+    output_path.write_text(
+        json.dumps(
+            {
+                "start_symbol": str(grammar.start()),
+                "productions": serialized_rules,
+            },
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
 
 
-def parse_with_oov_fallback(pcfg_grammar, tokens, max_len=22):
-    """Parses a word sequence using constrained Viterbi PCFG."""
-    if len(tokens) > max_len:
-        return None
-
-    extra_rules = []
-    for word in tokens:
-        if not pcfg_grammar.productions(rhs=word):
-            guessed_tags = get_oov_tag_guesses(word)
-            for tag in set(guessed_tags):
-                extra_rules.append(
-                    ProbabilisticProduction(Nonterminal(tag), [word], prob=1e-5)
-                )
-
-    if extra_rules:
-        active_grammar = PCFG(pcfg_grammar.start(), list(pcfg_grammar.productions()) + extra_rules)
-    else:
-        active_grammar = pcfg_grammar
-
-    viterbi = ViterbiParser(active_grammar, max_time=0.4)
-
-    buffer = io.StringIO()
-    try:
-        with contextlib.redirect_stderr(buffer):
-            parses = list(viterbi.parse(tokens))
-            return parses[0] if parses else None
-    except Exception:
-        return None
-
-
-def parse_tag_sequence(pcfg_grammar, tags, words):
-    """Fallback parser operating on POS tags while binding actual words to terminal leaves."""
-    nonterminal_productions = [p for p in pcfg_grammar.productions() if not p.is_lexical()]
-
-    unique_tags = set(tags)
-    tag_lexical_rules = [
-        ProbabilisticProduction(Nonterminal(tag), [tag], prob=1.0)
-        for tag in unique_tags
+def train_models():
+    """Train and save the POS tagger and structural PCFG."""
+    # PTB traces are parsing annotations, not observable POS tokens.
+    tagged_sentences = [
+        [(word, tag) for word, tag in sentence if tag != "-NONE-"]
+        for sentence in treebank.tagged_sents()
     ]
+    tagged_sentences = [sentence for sentence in tagged_sentences if sentence]
+    parsed_sentences = list(treebank.parsed_sents())
+
+    pos_tagger = train_pos_tagger(tagged_sentences)
+    grammar = train_structural_pcfg(parsed_sentences)
+
+    with TAGGER_PICKLE_PATH.open("wb") as output:
+        pickle.dump(pos_tagger, output)
+
+    with GRAMMAR_PICKLE_PATH.open("wb") as output:
+        pickle.dump(grammar, output)
+
+    _save_grammar_json(grammar)
+    return pos_tagger, grammar
+
+
+def predict_pos(pos_tagger, words: list[str]) -> list[str]:
+    """Predict one Penn Treebank POS tag for every input word."""
+    tagged_words = pos_tagger.tag(words)
+    predicted_tags = [tag for _, tag in tagged_words]
+
+    if len(predicted_tags) != len(words) or any(tag is None for tag in predicted_tags):
+        raise RuntimeError("POS tagger did not produce one tag per input word")
+
+    return predicted_tags
+
+
+class ViterbiCkyParser:
+    """Exact Viterbi CKY parser for the induced CNF PCFG."""
+
+    def __init__(self, grammar):
+        self.start = grammar.start()
+        self.lexical_rules = collections.defaultdict(list)
+        self.unary_rules = collections.defaultdict(list)
+        self.binary_rules = collections.defaultdict(
+            lambda: collections.defaultdict(list)
+        )
+
+        for production in grammar.productions():
+            rhs = production.rhs()
+            rule = (production.lhs(), math.log(production.prob()))
+
+            if production.is_lexical():
+                self.lexical_rules[rhs[0]].append(rule)
+            elif len(rhs) == 1 and isinstance(rhs[0], Nonterminal):
+                self.unary_rules[rhs[0]].append(rule)
+            elif (
+                len(rhs) == 2
+                and isinstance(rhs[0], Nonterminal)
+                and isinstance(rhs[1], Nonterminal)
+            ):
+                self.binary_rules[rhs[0]][rhs[1]].append(rule)
+            else:
+                raise ValueError(f"Grammar is not in supported CNF form: {production}")
+
+    def _apply_unary_closure(self, cell):
+        queue = collections.deque(cell)
+
+        while queue:
+            child_symbol = queue.popleft()
+            child_score, child_tree = cell[child_symbol]
+
+            for parent_symbol, rule_log_probability in self.unary_rules.get(
+                child_symbol, ()
+            ):
+                candidate_score = child_score + rule_log_probability
+                current = cell.get(parent_symbol)
+
+                if current is None or candidate_score > current[0] + 1e-12:
+                    cell[parent_symbol] = (
+                        candidate_score,
+                        Tree(str(parent_symbol), [child_tree]),
+                    )
+                    queue.append(parent_symbol)
+
+    def parse(self, tokens: list[str]) -> Tree | None:
+        token_count = len(tokens)
+        if token_count == 0:
+            return None
+
+        chart = [
+            [dict() for _ in range(token_count + 1)]
+            for _ in range(token_count)
+        ]
+
+        for index, token in enumerate(tokens):
+            cell = chart[index][index + 1]
+            for lhs, rule_log_probability in self.lexical_rules.get(token, ()):
+                current = cell.get(lhs)
+                if current is None or rule_log_probability > current[0]:
+                    cell[lhs] = (
+                        rule_log_probability,
+                        Tree(str(lhs), [token]),
+                    )
+            self._apply_unary_closure(cell)
+
+        for span_length in range(2, token_count + 1):
+            for start in range(token_count - span_length + 1):
+                end = start + span_length
+                cell = chart[start][end]
+
+                for split in range(start + 1, end):
+                    left_cell = chart[start][split]
+                    right_cell = chart[split][end]
+
+                    for left_symbol, (left_score, left_tree) in left_cell.items():
+                        right_rule_groups = self.binary_rules.get(left_symbol, {})
+
+                        for right_symbol, rules in right_rule_groups.items():
+                            right_result = right_cell.get(right_symbol)
+                            if right_result is None:
+                                continue
+
+                            right_score, right_tree = right_result
+                            for lhs, rule_log_probability in rules:
+                                candidate_score = (
+                                    left_score
+                                    + right_score
+                                    + rule_log_probability
+                                )
+                                current = cell.get(lhs)
+
+                                if current is None or candidate_score > current[0]:
+                                    cell[lhs] = (
+                                        candidate_score,
+                                        Tree(str(lhs), [left_tree, right_tree]),
+                                    )
+
+                if cell:
+                    self._apply_unary_closure(cell)
+
+        result = chart[0][token_count].get(self.start)
+        return result[1] if result is not None else None
+
+
+_PARSER_CACHE = {}
+
+
+def parse_predicted_tags(
+    grammar,
+    predicted_tags: list[str],
+    words: list[str],
+) -> tuple[Tree | None, str | None]:
+    """Parse predicted tags, restore the original words, and report failures."""
+    if len(predicted_tags) != len(words):
+        return None, "tag/word length mismatch"
 
     try:
-        tag_grammar = PCFG(pcfg_grammar.start(), nonterminal_productions + tag_lexical_rules)
-        viterbi_tag_parser = ViterbiParser(tag_grammar, max_time=0.2)
+        cache_key = id(grammar)
+        parser = _PARSER_CACHE.get(cache_key)
+        if parser is None:
+            parser = ViterbiCkyParser(grammar)
+            _PARSER_CACHE[cache_key] = parser
+        parsed_tree = parser.parse(predicted_tags)
+    except ValueError as error:
+        return None, f"grammar coverage error: {error}"
+    except Exception as error:  # Preserve the failure reason in the report.
+        return None, f"{type(error).__name__}: {error}"
 
-        tag_tokens = [str(tag) for tag in tags]
-        buffer = io.StringIO()
-        with contextlib.redirect_stderr(buffer):
-            parses = list(viterbi_tag_parser.parse(tag_tokens))
-            if parses:
-                tag_tree = parses[0]
-                for i, leaf_pos in enumerate(tag_tree.treepositions('leaves')):
-                    tag_tree[leaf_pos] = words[i]
-                return tag_tree
-    except Exception:
-        pass
+    if parsed_tree is None:
+        return None, "no complete TOP parse"
 
-    # Safety Fallback: Construct word-bound flat parse tree
-    children = [nltk.Tree(tag, [word]) for tag, word in zip(tags, words)]
-    return nltk.Tree('S', children)
+    parsed_tree.un_chomsky_normal_form(expandUnary=True)
 
+    if parsed_tree.label() == "TOP" and len(parsed_tree) == 1:
+        parsed_tree = parsed_tree[0]
 
-def compute_parseval_constituents(tree):
-    """Extracts labeled constituents: (Label, Start_Index, End_Index)."""
-    constituents = []
+    leaf_positions = parsed_tree.treepositions("leaves")
+    if len(leaf_positions) != len(words):
+        return None, "parsed leaf count does not match input word count"
 
-    def get_leaf_count(node):
-        if isinstance(node, nltk.Tree):
-            return len(node.leaves())
-        return 1
+    for position, word in zip(leaf_positions, words):
+        parsed_tree[position] = word
 
-    def traverse(node, start_idx):
-        if isinstance(node, nltk.Tree):
-            length = len(node.leaves())
-            end_idx = start_idx + length
-            if length > 1:
-                constituents.append((node.label(), start_idx, end_idx))
-            curr = start_idx
-            for child in node:
-                traverse(child, curr)
-                curr += get_leaf_count(child)
-
-    traverse(tree, 0)
-    return constituents
+    return parsed_tree, None
 
 
-def evaluate_parse(pred_tree, gold_tree, gold_tags):
-    """Computes genuine PARSEVAL Precision, Recall, and F1 against a gold reference tree."""
-    if pred_tree is None or gold_tree is None:
-        return 0.0, 0.0, 0.0, 0.0
-
-    # 1. POS Tag Accuracy
-    pred_pos_tags = [pos for _, pos in pred_tree.pos()]
-    correct_pos = sum(1 for p, g in zip(pred_pos_tags, gold_tags) if p == g)
-    pos_accuracy = correct_pos / len(gold_tags) if gold_tags else 0.0
-
-    # 2. PARSEVAL Metrics against reference tree
-    pred_consts = set(compute_parseval_constituents(pred_tree))
-    gold_consts = set(compute_parseval_constituents(gold_tree))
-
-    if not pred_consts:
-        return 0.0, 0.0, 0.0, pos_accuracy
-
-    matching = len(pred_consts.intersection(gold_consts))
-
-    precision = matching / len(pred_consts) if pred_consts else 0.0
-    recall = matching / len(gold_consts) if gold_consts else 0.0
-    f1 = (2 * precision * recall / (precision + recall)) if (precision + recall) > 0 else 0.0
-
-    return precision, recall, f1, pos_accuracy
+# Compatibility wrapper for older imports in the project.
+def train_pcfg():
+    """Train both models and return the structural grammar."""
+    _, grammar = train_models()
+    return grammar

@@ -1,5 +1,4 @@
 """
-Filename: extractor.py
 Author: Jayendra Matarage
 Created on: 9/20/2026 10:09 AM
 Description: 

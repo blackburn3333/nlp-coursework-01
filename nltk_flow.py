@@ -1,5 +1,4 @@
 """
-Filename: nltk_flow.py
 Author: Jayendra Matarage
 Created on: 9/25/2026 6:54 PM
 Description: 
@@ -20,9 +19,6 @@ print(f"Total parsed sentences loaded: {len(parsed_sents)}")
 print("\nSample Parse Tree (Sentence 1):")
 print(parsed_sents[0])
 
-
-
-
 # Collect all production rules from the training trees
 productions = []
 for tree in parsed_sents:
@@ -37,9 +33,6 @@ print(f"Total induced PCFG rules: {len(pcfg_grammar.productions())}")
 print("\nSample Induced Rules:")
 for rule in pcfg_grammar.productions()[:10]:
     print(rule)
-
-
-
 
 # Instantiate the Viterbi probabilistic parser
 parser = ViterbiParser(pcfg_grammar)
